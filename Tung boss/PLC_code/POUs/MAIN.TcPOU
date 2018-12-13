@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="MAIN" Id="{0968eccf-1f42-4a9c-9ff8-6dadd354813e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR;
+	InitEnOcean: EnOCean;
+	Switches: SwitchEnOcean;
+	Search: SearchEnOcean;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[InitEnOcean();
+Switches();
+Search();]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="7" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="40" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

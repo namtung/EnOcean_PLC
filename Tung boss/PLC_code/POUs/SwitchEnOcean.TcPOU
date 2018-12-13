@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="SwitchEnOcean" Id="{766c869b-6fa6-441c-9e6d-d014d419c66d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SwitchEnOcean
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	SwitchEnOcean: FB_Rec_RPS_Switch;
+	byNode: BYTE;
+	dw_ID: DWORD;
+	bReceive: BOOL;
+	outNode: BYTE;
+	str_EnOceanSwitch: STR_EnOceanSwitch;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Listening for switch EnOcean
+byNode := 0;
+dw_ID := 2943328; //ID of switch, need to searched 
+SwitchEnOcean(
+	str_KL6581:= IO.str_KL6581, 
+	byNode:= byNode, 
+	dw_ID:= dw_ID, 
+	str_EnOceanSwitch=> str_EnOceanSwitch, 
+	by_Node=> outNode, 
+	bReceive=> bReceive);]]></ST>
+    </Implementation>
+    <LineIds Name="SwitchEnOcean">
+      <LineId Id="36" Count="2" />
+      <LineId Id="22" Count="5" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

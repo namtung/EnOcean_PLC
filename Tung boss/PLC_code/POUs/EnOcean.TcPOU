@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="EnOcean" Id="{ce5fd879-b97c-46fd-b6fd-2e37a62a2e0c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EnOcean
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	EnOceanRev: FB_KL6581;
+	bReady: BOOL;
+	bBusy: BOOL;
+	bError: BOOL;
+	iErrorID: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Initialize EnOcean gateway
+EnOceanRev(
+	bInit:= TRUE, 
+	nIdx:= 1, 
+	bReady=> bReady, 
+	bBusy=> bBusy, 
+	bError=> bError, 
+	iErrorID=> iErrorID, 
+	str_KL6581=> IO.str_KL6581, 
+	stKL6581_in:= IO.stKL6581_In, 
+	stKL6581_out:= IO.stKL6581_Out);
+	
+]]></ST>
+    </Implementation>
+    <LineIds Name="EnOcean">
+      <LineId Id="60" Count="0" />
+      <LineId Id="11" Count="8" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="24" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

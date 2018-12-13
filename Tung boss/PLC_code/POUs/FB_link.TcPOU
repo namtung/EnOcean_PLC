@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="FB_link" Id="{ea086608-4b80-4aad-851a-43c59d3349dc}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_link
+VAR_INPUT
+	IN: BOOL;
+END_VAR
+VAR_OUTPUT
+	Q: bool;
+END_VAR
+VAR
+	fbTimerTON: TON;
+	fbTimerTOF: TOF;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbTimerTON(IN:= (NOT (fbTimerTOF.Q) AND IN), PT:=T#1S , Q=> fbTimerTOF.IN, ET=> );
+fbTimerTOF(IN:= , PT:= fbTimerTON.PT, Q=> Q, ET=> );]]></ST>
+    </Implementation>
+    <LineIds Name="FB_link">
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

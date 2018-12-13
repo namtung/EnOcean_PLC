@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="SearchEnOcean" Id="{60738440-23f4-493b-aa50-acb6bbcc1b7d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK SearchEnOcean
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	EnOceanSearch: FB_EnOcean_Search;
+	byNode: BYTE;
+	bReceive: BOOL;
+	ar_ID: ARRAY [0..255] OF DWORD;
+	iDevices: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Search and get EnOcean IDs
+EnOceanSearch(
+	bStart:= TRUE, 
+	str_KL6581:= IO.str_KL6581, 
+	byNode:= byNode, 
+	bReceive=> bReceive, 
+	iDevices=> iDevices, 
+	ar_ID=> ar_ID);
+	
+	
+	]]></ST>
+    </Implementation>
+    <LineIds Name="SearchEnOcean">
+      <LineId Id="21" Count="0" />
+      <LineId Id="11" Count="5" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="22" Count="2" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
